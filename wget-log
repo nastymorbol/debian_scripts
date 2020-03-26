@@ -1,0 +1,11 @@
+--2020-03-26 20:52:58--  https://code.headmelted.com/installers/apt.sh
+Resolving code.headmelted.com (code.headmelted.com)... 104.27.186.80, 104.27.187.80, 2606:4700:3035::681b:bb50, ...
+Connecting to code.headmelted.com (code.headmelted.com)|104.27.186.80|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/x-sh]
+Saving to: ‘STDOUT’
+
+-                                 [<=>                                             ]       0  --.-KB/s               -                                 [ <=>                                            ]       0  --.-KB/s    in 0s      
+
+
+Cannot write to ‘-’ (Success).
