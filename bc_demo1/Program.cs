@@ -15,21 +15,31 @@ namespace bc_demo1
             var network = new DEOS.BACnet.Network("172.20.47.22");
 
             // Anonyme Event Registrierung
-            // Geräte werden dem Netwerk hinzugefügt, wenn ein IAM empfangen wurde
+            // Geräte werden dem Netwerk hinzugefügt, wenn ein I'AM empfangen wurde
             network.OnDeviceAdd += (sender, device) => {
                 // GetObectName wird hier Syncron durchgeführt
                 // Events werden jedoch generell 'gecacht'
-                Console.WriteLine($"BACnet Device found {device} Objectname: {device.GetObjectName()}");
+                Console.WriteLine($"BACnet Device found {device} Objectname: {device.GetObjectName()}");                
             };
 
+            /*
+            // Auch asynchrone Event Delegaten sind erlaubt!
+            network.OnDeviceAdd += async (sender, device) => {
+                // GetObectName wird hier Syncron durchgeführt
+                // Events werden jedoch generell 'gecacht'
+                Console.WriteLine($"BACnet Device found {device} Objectname: {device.GetObjectName()}");
+                await DoSomething(device);
+            };
+            */
+            
             // Start des Eigentlichen BACnet Netzwerkes
             network.Start();
 
             while (true)
             {
+                // Warte hier erstmal 5sekunden
                 await Task.Delay(5000);
                 Console.WriteLine($"{DateTime.Now} [INFO] MainLoop run");
-
 
                 var meineControllerInstanznummer = 47163;
                 // Mal gucken ob 'MEIN' Controller im Netzwerk vorhanden
@@ -42,7 +52,7 @@ namespace bc_demo1
             }
 
             Console.WriteLine($"Proram shutdown");
-            
+
             network.Stop();
             
             Console.WriteLine($"by by ...");
